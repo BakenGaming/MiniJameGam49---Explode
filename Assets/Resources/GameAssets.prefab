@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &971996240811603046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8116101724223682870}
+  - component: {fileID: 944431252179938041}
+  m_Layer: 0
+  m_Name: GameAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8116101724223682870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971996240811603046}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &944431252179938041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971996240811603046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8622a95a4dfb14b82ce59574f47ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pfSpawnIndicator: {fileID: 1486626310686124226, guid: 601e972d0640afe4a858f811d2a70df7, type: 3}
+  pfTextPopup: {fileID: 0}
+  pfDamagePopup: {fileID: 0}
+  pfPlayerObject: {fileID: 9045157396915800308, guid: 9c19fe6239a505747a00457b3dd879d0, type: 3}
+  pfPlanetObject: {fileID: 1856233523092358675, guid: 9fc943852cb3641418280c561db25048, type: 3}
+  pfWeapon: {fileID: 6770451682761262032, guid: 9b9c021038cd4424fa9385df427a708d, type: 3}
+  pfEnemyObject: {fileID: 5337907439433744137, guid: 53a927920877c1d4c984a3bc7cd65561, type: 3}
+  pfProjectile: {fileID: 1537813124307600655, guid: 16d663fdcd6cd964e994bdefae413703, type: 3}
+  pfEnergyBobble: {fileID: 5705946624366278005, guid: 9ee15d02944edd74799a175b06e858f0, type: 3}
+  pfSpaceCrystal: {fileID: 656957134605509645, guid: 802e474f3212354429e9513365322c18, type: 3}
+  audioClipArray: []
+  musicTrackArray: []
