@@ -30,8 +30,7 @@ public class GameAssets : MonoBehaviour
     public GameObject pfWeapon;
     public GameObject pfEnemyObject;
     public GameObject pfProjectile;
-    public GameObject pfEnergyBobble;
-    public GameObject pfSpaceCrystal;
+    public GameObject pfCollectable;
   
     public SoundAudioClip[] audioClipArray;
     public MusicAudioClip[] musicTrackArray;

@@ -1,7 +1,10 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class CollectableObjectHandler : MonoBehaviour, ICollectable
 {
+    public static event Action<CollectableSO> OnItemCollected;
     private CollectableSO collectable;
     private int value;
     private float actualAttractSpeed = 50f;
@@ -14,11 +17,28 @@ public class CollectableObjectHandler : MonoBehaviour, ICollectable
         collectable = _c;
         GetComponent<SpriteRenderer>().sprite = collectable.itemSprite;
         itemRB = GetComponent<Rigidbody2D>();
+        float dropForce = 25f;
+        Vector2 dropDirection = new Vector2(UnityEngine.Random.Range(-1f,1f), UnityEngine.Random.Range(-1f,1f));
+        itemRB.AddForce(dropDirection * dropForce, ForceMode2D.Impulse);
+        StartCoroutine(ImpulseStop());
+        StartCoroutine(AttractDelay());
+    }
+    IEnumerator ImpulseStop()
+    {
+        yield return new WaitForSeconds(.2f);
+        itemRB.linearVelocity = Vector2.zero;
+    }
+
+    IEnumerator AttractDelay()
+    {
+        yield return new WaitForSeconds(.6f);
+        SetTarget(GameManager.i.GetPlanetCenter().position);
     }
     public void Collect()
     {
-        Debug.Log($"{collectable.itemName} Collected");
-        ObjectPooler.EnqueueObject(this, collectable.itemName);
+        TextPopUp.Create(GameManager.i.GetPlanetCenter().position, collectable.itemName);
+        OnItemCollected?.Invoke(collectable);
+        ObjectPooler.EnqueueObject(this, "Collectable");
     }
 
     public void SetTarget(Vector3 position)

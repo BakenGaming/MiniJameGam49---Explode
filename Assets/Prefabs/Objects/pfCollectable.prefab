@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1224702874746402605}
   - component: {fileID: 5647390583101296123}
   - component: {fileID: 365475181991994349}
-  m_Layer: 0
-  m_Name: pfEnergyBobble
+  m_Layer: 10
+  m_Name: pfCollectable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,14 +101,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5705946624366278005}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

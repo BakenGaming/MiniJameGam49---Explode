@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
-
 public class WeaponHandler : MonoBehaviour
 {
+    public static event Action OnNewWeaponEquipped;
+    public static event Action OnNewSpecialWeaponEquipped;
     private float weaponCDTimer;
     private WeaponSO weapon;
     private Transform weaponFirePoint;
@@ -11,16 +13,15 @@ public class WeaponHandler : MonoBehaviour
         weapon = _w;
         weaponFirePoint = _fp;
     }
-    public void FireWeapon()
+    public void FireWeapon(GameObject _t)
     {
         if(weaponCDTimer <= 0)
         {
-            
             Projectile newProjectile = ObjectPooler.DequeueObject<Projectile>("Player Projectile");
             newProjectile.transform.position = weaponFirePoint.position;
             newProjectile.transform.rotation = weaponFirePoint.rotation;
             newProjectile.gameObject.SetActive(true);
-            newProjectile.GetComponent<Projectile>().Initialize(weapon.weaponsStats);
+            newProjectile.GetComponent<Projectile>().Initialize(weapon.weaponsStats, _t);
             weaponCDTimer = weapon.weaponsStats.fireRate;
         }
     }

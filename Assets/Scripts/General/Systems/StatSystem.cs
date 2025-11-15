@@ -5,6 +5,8 @@ using UnityEngine;
 public class StatSystem
 {
     private int health;
+    private int energy;
+    public int damage;
     private float moveSpeed;
     private float fireRate;
     private float critChance;
@@ -23,6 +25,7 @@ public class StatSystem
     public StatSystem (EnemyStatsSO _stats)
     {
         health = _stats.health;
+        damage = _stats.damage;
         moveSpeed = _stats.moveSpeed;
         fireRate = _stats.fireRate;
         critChance = _stats.critChance;
@@ -32,10 +35,13 @@ public class StatSystem
 
     public StatSystem (PlanetStatsSO _stats)
     {
-        health = _stats.health;
+        health = _stats.maxHealth;
+        energy = _stats.maxEnergy;
+
     }
 
-    public int GetPlayerHealth (){return health;}
+    public int GetHealth (){return health;}
+    public int GetEnergy (){return energy;}
     public float GetMoveSpeed(){return moveSpeed;}
     public float GetFireRate(){return fireRate;}
     public float GetCritChance(){return critChance;}

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EnemySpawnSystem _spawner;
     [SerializeField] private LevelSO[] levels;
     [SerializeField] private Transform projectilePool, enemyPool, objectPool;
+    [SerializeField] private UIController _uiController;
     private int levelIndex = 0;
     private GameObject playerGO;
     private GameObject planet;
@@ -46,6 +47,11 @@ public class GameManager : MonoBehaviour
         playerGO = Instantiate(GameAssets.i.pfPlayerObject, planet.transform.Find("ShipSpawnPoint"));
         playerGO.transform.parent = planet.transform;
         playerGO.GetComponent<IHandler>().Initialize(startingWeapon);
+        InitializeUI();        
+    }
+    private void InitializeUI()
+    {
+        _uiController.Initialize();
         SetupSpawner();
     }
 
@@ -59,8 +65,7 @@ public class GameManager : MonoBehaviour
         ObjectPooler.SetupPool(GameAssets.i.pfProjectile.GetComponent<Projectile>(), 20, "Player Projectile");
         ObjectPooler.SetupPool(GameAssets.i.pfProjectile.GetComponent<Projectile>(), 20, "Enemy Projectile");
         ObjectPooler.SetupPool(GameAssets.i.pfEnemyObject.GetComponent<EnemyHandler>(), 20, "Enemy");
-        ObjectPooler.SetupPool(GameAssets.i.pfEnergyBobble.GetComponent<CollectableObjectHandler>(), 20, "Energy");
-        ObjectPooler.SetupPool(GameAssets.i.pfSpaceCrystal.GetComponent<CollectableObjectHandler>(), 20, "Space Crystal");
+        ObjectPooler.SetupPool(GameAssets.i.pfCollectable.GetComponent<CollectableObjectHandler>(), 20, "Collectable");
     }
     #endregion
     #region Game Manager Functions

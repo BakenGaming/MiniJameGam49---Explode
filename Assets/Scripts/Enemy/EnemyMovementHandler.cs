@@ -38,7 +38,8 @@ public class EnemyMovementHandler : MonoBehaviour
             thisRigidbody.linearVelocity = Vector2.zero;
             return;
         }
-        thisRigidbody.linearVelocity = aimDirection * handler.GetStatSystem().GetMoveSpeed() * Time.deltaTime;
+        //thisRigidbody.linearVelocity = aimDirection * handler.GetStatSystem().GetMoveSpeed() * Time.deltaTime;
+        transform.position += aimDirection * handler.GetStatSystem().GetMoveSpeed() * Time.deltaTime;
     }
 
     public void SetCanMove(bool _canMove){canMove = _canMove;}

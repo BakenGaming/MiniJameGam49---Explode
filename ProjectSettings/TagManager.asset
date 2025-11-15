@@ -17,7 +17,7 @@ TagManager:
   - Enemy Projectile
   - Collectable
   - Deadzone
-  - 
+  - TargetLocator
   - 
   - 
   - 
@@ -58,6 +58,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1532309429
+    locked: 0
+  - name: Popups
+    uniqueID: 3611429091
     locked: 0
   m_RenderingLayers:
   - Default

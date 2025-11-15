@@ -3,5 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Planet Stats")]
 public class PlanetStatsSO : ScriptableObject
 {
-    public int health;
+    public int maxHealth;
+    public int maxEnergy;
 }

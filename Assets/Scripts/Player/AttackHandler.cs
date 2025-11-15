@@ -1,12 +1,17 @@
 using System.Collections.Generic;
+using CodeMonkey.Utils;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AttackHandler : MonoBehaviour, IAttackHandler
 {
     private List<WeaponHandler> equippedWeapons;
+    private TargetLocater targetLocator;
+    private Transform currentTarget;
     private bool isAttacking;    
     public void Initialize(WeaponHandler _w)
     {
+        targetLocator = transform.Find("TargetLocator").GetComponent<TargetLocater>();
         equippedWeapons = new List<WeaponHandler>();
         EquipNewWeapon(_w);
         isAttacking = true;
@@ -23,7 +28,8 @@ public class AttackHandler : MonoBehaviour, IAttackHandler
 
         foreach(WeaponHandler weapon in equippedWeapons)
         {
-            weapon.FireWeapon();
+            GameObject newTarget = targetLocator.FindTarget();
+            weapon.FireWeapon(newTarget);
         }
     }
     private void EquipNewWeapon(WeaponHandler _weapon)

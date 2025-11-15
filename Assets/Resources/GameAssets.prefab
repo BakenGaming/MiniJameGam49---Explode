@@ -45,14 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pfSpawnIndicator: {fileID: 1486626310686124226, guid: 601e972d0640afe4a858f811d2a70df7, type: 3}
-  pfTextPopup: {fileID: 0}
-  pfDamagePopup: {fileID: 0}
+  pfTextPopup: {fileID: 8390091064251752577, guid: ac5dfb71d7c2e6b49b93a587a51c17f4, type: 3}
+  pfDamagePopup: {fileID: 8390091064251752577, guid: af8bcb5fef0f92949922872cfd015ec4, type: 3}
   pfPlayerObject: {fileID: 9045157396915800308, guid: 9c19fe6239a505747a00457b3dd879d0, type: 3}
   pfPlanetObject: {fileID: 1856233523092358675, guid: 9fc943852cb3641418280c561db25048, type: 3}
   pfWeapon: {fileID: 6770451682761262032, guid: 9b9c021038cd4424fa9385df427a708d, type: 3}
   pfEnemyObject: {fileID: 5337907439433744137, guid: 53a927920877c1d4c984a3bc7cd65561, type: 3}
   pfProjectile: {fileID: 1537813124307600655, guid: 16d663fdcd6cd964e994bdefae413703, type: 3}
-  pfEnergyBobble: {fileID: 5705946624366278005, guid: 9ee15d02944edd74799a175b06e858f0, type: 3}
-  pfSpaceCrystal: {fileID: 656957134605509645, guid: 802e474f3212354429e9513365322c18, type: 3}
+  pfCollectable: {fileID: 5705946624366278005, guid: 9ee15d02944edd74799a175b06e858f0, type: 3}
   audioClipArray: []
   musicTrackArray: []

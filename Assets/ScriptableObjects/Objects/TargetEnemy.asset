@@ -15,3 +15,6 @@ MonoBehaviour:
   enemyName: Asteroid
   enemySprite: {fileID: 0}
   enemyStatsSO: {fileID: 11400000, guid: 6236253640693d94bbe4e0ce1ff5eaed, type: 2}
+  lootBag:
+  - {fileID: 11400000, guid: 90f55134517822e43a2b9a746ebb4857, type: 2}
+  - {fileID: 11400000, guid: ce3671361afe7b34c8acb27abd1e9963, type: 2}

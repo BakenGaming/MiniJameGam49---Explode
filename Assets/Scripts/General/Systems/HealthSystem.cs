@@ -6,9 +6,9 @@ public class HealthSystem
 {
     private float maxHealth, currentHealth;
 
-    public HealthSystem(float maxHealth)
+    public HealthSystem(float _maxHealth)
     {
-        this.maxHealth = maxHealth;
+        maxHealth = _maxHealth;
         currentHealth = maxHealth;
     }
 

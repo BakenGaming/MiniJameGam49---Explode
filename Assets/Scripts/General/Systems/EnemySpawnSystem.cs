@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemySpawnSystem : MonoBehaviour
 {
@@ -24,17 +25,27 @@ public class EnemySpawnSystem : MonoBehaviour
     private void UpdateTimers()
     {
         spawnTimer -= Time.deltaTime;
-        if(spawnTimer <= 0) readyToSpawn = true;
     }
 
     private void SpawnEnemy()
     {
+        if (spawnTimer > 0 || !readyToSpawn) return;
         readyToSpawn = false;
         ChooseSpawnPoint();
         SpawnIndicatorPopup.Create(spawnPoint);
-        spawnTimer = currentLevel.timeBetweenSpawnsStart;
+        StartCoroutine(IndicatorDelay());
     }
 
+    IEnumerator IndicatorDelay()
+    {
+        yield return new WaitForSeconds(.6f);
+        EnemyHandler newEnemy = ObjectPooler.DequeueObject<EnemyHandler>("Enemy");
+        newEnemy.transform.position = spawnPoint;
+        newEnemy.gameObject.SetActive(true);
+        newEnemy.Initialize(currentLevel.levelEnemies[Random.Range(0, currentLevel.levelEnemies.Length)]);
+        spawnTimer = currentLevel.timeBetweenSpawnsStart;
+        readyToSpawn = true;
+    }
     private void  ChooseSpawnPoint()
     {
         spawnPoint = new Vector3(
