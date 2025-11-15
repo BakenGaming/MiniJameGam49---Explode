@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93646d0252bc95e46a3dd08905bfc82f, type: 3}
   m_Name: BasicPlanetStats
   m_EditorClassIdentifier: Assembly-CSharp::PlanetStatsSO
-  health: 100
+  maxHealth: 100
+  maxEnergy: 100

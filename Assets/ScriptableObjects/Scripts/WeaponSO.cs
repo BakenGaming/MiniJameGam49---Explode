@@ -8,7 +8,7 @@ public enum WeaponClass
 public class WeaponSO : ScriptableObject
 {
     public string weaponName;
-    public Sprite weaponUISprite;
+    public Sprite weaponSprite;
     public WeaponStatsSO weaponsStats;
     public WeaponClass weaponClass;
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class UIController : MonoBehaviour
 {
@@ -18,12 +19,15 @@ public class UIController : MonoBehaviour
     [Header("GAME UI")]
     [SerializeField] private GameObject gameUIPanel;
     [SerializeField] private GameObject crystalUI;
-    //[SerializeField] private GameObject leftEnergyUI;
-    //[SerializeField] private GameObject rightEnergyUI;
+    [SerializeField] private TextMeshProUGUI crystalText;
+    [SerializeField] private GameObject leftEnergyUI;
+    [SerializeField] private GameObject rightEnergyUI;
     [SerializeField] private GameObject leftHealthUI;
     [SerializeField] private GameObject rightHealthUI;
     [SerializeField] private GameObject weaponsUI;
-    [SerializeField] private GameObject specialWeaponUI;
+    [SerializeField] private TextMeshProUGUI gameTimerText;
+    [SerializeField] private Transform crystalPopupLocation;
+    //[SerializeField] private GameObject specialWeaponUI;
     [Header("VARIABLES")]
     [SerializeField] private bool isMainMenu;
     #endregion
@@ -55,14 +59,17 @@ public class UIController : MonoBehaviour
 
 
         PlanetHandler.OnHealthValueChange += UpdateHealthUI;
-        //PlanetHandler.OnEnergyValueChange += UpdateHealthUI;
-        WeaponHandler.OnNewWeaponEquipped += UpdateWeaponUI;
-        WeaponHandler.OnNewSpecialWeaponEquipped += UpdateSpecialWeaponUI;
+        //PlanetHandler.OnEnergyValueChange += UpdateEnergyUI;
+        PlanetHandler.OnCrystalValueChanged += UpdateCrystalUI;
+        PlayerHandler.OnNewWeaponEquipped += UpdateWeaponUI;
+        //WeaponHandler.OnNewSpecialWeaponEquipped += UpdateSpecialWeaponUI;
+        EnemySpawnSystem.OnTimerChange += UpdateGameTimerUI;
+        EnemySpawnSystem.OnLevelEnd += HandleLevelEnd;
 
-        //UpdateHealthUI();
+        UpdateHealthUI();
         //UpdateEnergyUI();
-        //UpdateCrystalUI();
-        //UpdateWeaponUI();
+        UpdateCrystalUI();
+        InitializeWeaponUI();
         //UpdateSpecialWeaponUI();
     }
     #endregion
@@ -102,8 +109,9 @@ public class UIController : MonoBehaviour
 
     public void OpenShopMenu()
     {
-        shopMenu.SetActive(true);
         gameUIPanel.SetActive(false);
+        shopMenu.SetActive(true);
+        shopMenu.GetComponent<ShopMenuController>().Initialize();
     }
 
     public void CloseShopMenu()
@@ -135,7 +143,7 @@ public class UIController : MonoBehaviour
     #region GameUI
     private void UpdateCrystalUI()
     {
-        
+        crystalText.text = PlanetHandler.i.GetCrystalCount().ToString();
     }
     private void UpdateEnergyUI()
     {
@@ -148,14 +156,39 @@ public class UIController : MonoBehaviour
         leftHealthUI.GetComponent<Image>().fillAmount = PlanetHandler.i.GetHealthSystem().GetHealthPercentage();
         rightHealthUI.GetComponent<Image>().fillAmount = PlanetHandler.i.GetHealthSystem().GetHealthPercentage();
     }
-    private void UpdateWeaponUI()
+    private void InitializeWeaponUI()
     {
-        
+        foreach(WeaponSO weapon in PlayerHandler.i.GetActiveWeapons())
+        {
+            GameObject newWeapon = Instantiate(GameAssets.i.pfWeaponUI, weaponsUI.transform);
+            newWeapon.transform.SetParent(weaponsUI.transform);
+            newWeapon.GetComponent<Image>().sprite = weapon.weaponSprite;
+        }
     }
-    private void UpdateSpecialWeaponUI()
+    private void UpdateWeaponUI(WeaponSO _w)
     {
-        
+        Debug.Log("Equipping New Weapon To UI");
+        GameObject newWeapon = Instantiate(GameAssets.i.pfWeaponUI, weaponsUI.transform);
+        newWeapon.transform.SetParent(weaponsUI.transform);
+        newWeapon.GetComponent<SpriteRenderer>().sprite = _w.weaponSprite;
+    }
+    private void UpdateGameTimerUI(float _gt)
+    {
+        gameTimerText.text = _gt.ToString("###.#");
+    }
+    private void HandleLevelEnd()
+    {
+        GameManager.i.PauseGame();
+        OpenShopMenu();
     }
 
+    private void HandleLevelRestart()
+    {
+        CloseShopMenu();
+        GameManager.i.StartNewLevel();
+    }
+    #endregion
+    #region GetFunctions
+    public Transform GetCrystalUILocation(){return crystalPopupLocation;}
     #endregion
 }

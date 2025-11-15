@@ -5,6 +5,8 @@ using UnityEngine;
 public class CollectableObjectHandler : MonoBehaviour, ICollectable
 {
     public static event Action<CollectableSO> OnItemCollected;
+    public static event Action<CollectableObjectHandler> OnCollectableCreated;
+    public static event Action<CollectableObjectHandler> OnCollectableRemoved;
     private CollectableSO collectable;
     private int value;
     private float actualAttractSpeed = 50f;
@@ -15,6 +17,7 @@ public class CollectableObjectHandler : MonoBehaviour, ICollectable
     public void InitializeCollectable(CollectableSO _c)
     {
         collectable = _c;
+        OnCollectableCreated?.Invoke(this);
         GetComponent<SpriteRenderer>().sprite = collectable.itemSprite;
         itemRB = GetComponent<Rigidbody2D>();
         float dropForce = 25f;
@@ -36,8 +39,9 @@ public class CollectableObjectHandler : MonoBehaviour, ICollectable
     }
     public void Collect()
     {
-        TextPopUp.Create(GameManager.i.GetPlanetCenter().position, collectable.itemName);
+        TextPopUp.Create(UIController.i.GetCrystalUILocation().position, $"+{collectable.itemValue}");
         OnItemCollected?.Invoke(collectable);
+        OnCollectableRemoved?.Invoke(this);
         ObjectPooler.EnqueueObject(this, "Collectable");
     }
 

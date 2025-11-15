@@ -53,5 +53,6 @@ MonoBehaviour:
   pfEnemyObject: {fileID: 5337907439433744137, guid: 53a927920877c1d4c984a3bc7cd65561, type: 3}
   pfProjectile: {fileID: 1537813124307600655, guid: 16d663fdcd6cd964e994bdefae413703, type: 3}
   pfCollectable: {fileID: 5705946624366278005, guid: 9ee15d02944edd74799a175b06e858f0, type: 3}
+  pfWeaponUI: {fileID: 4949455607012505634, guid: cfffffa09c77cc44dbb763193feb95c4, type: 3}
   audioClipArray: []
   musicTrackArray: []

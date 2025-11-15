@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BasicWeapon
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSO
   weaponName: Standard Package
-  weaponUISprite: {fileID: -3979115527774415351, guid: dcb36ca9afd8c8f46ba812d13810ba59, type: 3}
-  projectileGO: {fileID: 1537813124307600655, guid: 16d663fdcd6cd964e994bdefae413703, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 622612affbb3cf448ba1a2bbd60dc5e6, type: 3}
   weaponsStats: {fileID: 11400000, guid: c294021c66b2d3045bb860dcf07aa79c, type: 2}
+  weaponClass: 0

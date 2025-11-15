@@ -7,12 +7,14 @@ public class PlanetHandler : MonoBehaviour
     private static PlanetHandler _i;
     public static PlanetHandler i { get { return _i; } }
     public static event Action OnHealthValueChange;
-    public static event Action OnEnergyValueChange;
+    //public static event Action OnEnergyValueChange;
+    public static event Action OnCrystalValueChanged;
     [SerializeField] private PlanetStatsSO planetStatsSO;
 
     private StatSystem _statSystem;
     private HealthSystem _healthSystem;
-    private EnergySystem _energySystem;
+    private PlayerModifiers _modifiers;
+    //private EnergySystem _energySystem;
     private int crystalCount;
     #endregion
     #region Initialize
@@ -26,7 +28,9 @@ public class PlanetHandler : MonoBehaviour
     #region Get Functions
     public HealthSystem GetHealthSystem(){return _healthSystem;}
     public StatSystem GetStatSystem(){return _statSystem;}
-    public EnergySystem GetEnergySystem(){return _energySystem;}
+    //public EnergySystem GetEnergySystem(){return _energySystem;}
+    public int GetCrystalCount(){return crystalCount;}
+    public PlayerModifiers GetModifierSystem(){return _modifiers;}
     #endregion
     #region Handle Player Functions
     public void HandleDeath()
@@ -43,8 +47,8 @@ public class PlanetHandler : MonoBehaviour
     public void IncreaseEnergy(int _amount)
     {
         Debug.Log($"Gained {_amount} energy");
-        _energySystem.GainEnergy(_amount);
-        OnEnergyValueChange?.Invoke();
+        //_energySystem.GainEnergy(_amount);
+        //OnEnergyValueChange?.Invoke();
     }
 
     private void UpdateCollectedItemCount(CollectableSO _c)
@@ -56,6 +60,7 @@ public class PlanetHandler : MonoBehaviour
                 break;
             case CollectableType.spaceCrystal:
                 crystalCount += _c.itemValue;
+                OnCrystalValueChanged?.Invoke();
                 break;
         }
     }
@@ -64,8 +69,9 @@ public class PlanetHandler : MonoBehaviour
     private void SetupPlanet()
     {
         _statSystem = new StatSystem(planetStatsSO);
-        _energySystem = new EnergySystem(_statSystem.GetEnergy());
-        _healthSystem = new HealthSystem(_statSystem.GetHealth());
+        _modifiers = new PlayerModifiers();
+        //_energySystem = new EnergySystem(_statSystem.GetEnergy());
+        _healthSystem = new HealthSystem(_statSystem.GetHealth() + _modifiers.GetModifierValue(ModifierType.health));
     }
     #endregion
 }

@@ -59,6 +59,10 @@ public class GameManager : MonoBehaviour
     {
         _spawner.InitializeSpawner(levels[levelIndex]);
     }
+    public void StartNewLevel()
+    {
+        Debug.Log("Start New Level");
+    }
 
     public void SetupObjectPools()
     {

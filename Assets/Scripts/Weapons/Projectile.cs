@@ -7,13 +7,14 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;
     private float lifeTimer;
     private GameObject target;
-    public void Initialize(WeaponStatsSO _w, GameObject _t)
+    public void Initialize(WeaponSO _w, GameObject _t)
     {
         if(_t == null || _t.gameObject.activeInHierarchy == false) { ExpireObject(); return;}
-        weaponStats = _w;
+        transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = _w.weaponSprite;
+        weaponStats = _w.weaponsStats;
         target = _t;
         rb = GetComponent<Rigidbody2D>();
-        lifeTimer = _w.lifeTime;
+        lifeTimer = weaponStats.lifeTime;
         isReady = true;
     }
 

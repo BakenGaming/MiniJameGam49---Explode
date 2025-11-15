@@ -41,6 +41,7 @@ public class StatSystem
     }
 
     public int GetHealth (){return health;}
+    public float GetDamage(){return damage;}
     public int GetEnergy (){return energy;}
     public float GetMoveSpeed(){return moveSpeed;}
     public float GetFireRate(){return fireRate;}

@@ -31,7 +31,7 @@ public class TextPopUp : MonoBehaviour
     public void Setup(string text)
     {
         textMesh.SetText(text);
-        textMesh.fontSize = 20f;
+        textMesh.fontSize = 28f;
         textColor = UtilsClass.GetColorFromString("0087FF");
 
         textMesh.color = textColor;
@@ -40,7 +40,7 @@ public class TextPopUp : MonoBehaviour
         sortingOrder++;
         textMesh.sortingOrder = sortingOrder;
 
-        moveVector = new Vector3(-1, 15) * 1f;
+        moveVector = new Vector3(0, 15) * 1f;
     }
 
     private void Update()

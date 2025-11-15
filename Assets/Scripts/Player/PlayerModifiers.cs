@@ -5,20 +5,22 @@ using UnityEngine.Rendering;
 
 public enum ModifierType
 {
-    speed, fireRate, damage, critChance, critBonus
+    health, damage, speed, fireRate, critChance, critBonus
 }
 public class PlayerModifiers
 {
+    private float healthModifier;
+    private float damageModifier;
     private float moveSpeedModifier;
     private float fireRateModifier;
-    private float damageModifier;
     private float critChanceModifier;
     private float critBonusModifier;
     public PlayerModifiers()
     {
+        healthModifier = 0f;
+        damageModifier = 1f;
         moveSpeedModifier = 1f;
         fireRateModifier = 1f;
-        damageModifier = 1f;
         critChanceModifier = 1f;
         critBonusModifier = 1f;
     }
@@ -27,14 +29,17 @@ public class PlayerModifiers
     {
         switch (_m)
         {
+            case ModifierType.health:
+                healthModifier += _a;
+                break;
+            case ModifierType.damage:
+                damageModifier += _a;
+                break;
             case ModifierType.speed:
                 moveSpeedModifier += _a;
                 break;
             case ModifierType.fireRate:
                 fireRateModifier += _a;
-                break;
-            case ModifierType.damage:
-                damageModifier += _a;
                 break;
             case ModifierType.critChance:
                 critChanceModifier += _a;
@@ -49,12 +54,14 @@ public class PlayerModifiers
     {
         switch (_m)
         {
+            case ModifierType.health:
+                return healthModifier;
+            case ModifierType.damage:
+                return damageModifier;
             case ModifierType.speed:
                 return moveSpeedModifier;
             case ModifierType.fireRate:
                 return fireRateModifier;
-            case ModifierType.damage:
-                return damageModifier;
             case ModifierType.critChance:
                 return critChanceModifier;
             case ModifierType.critBonus:

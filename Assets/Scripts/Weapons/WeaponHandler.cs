@@ -2,8 +2,6 @@ using System;
 using UnityEngine;
 public class WeaponHandler : MonoBehaviour
 {
-    public static event Action OnNewWeaponEquipped;
-    public static event Action OnNewSpecialWeaponEquipped;
     private float weaponCDTimer;
     private WeaponSO weapon;
     private Transform weaponFirePoint;
@@ -21,11 +19,10 @@ public class WeaponHandler : MonoBehaviour
             newProjectile.transform.position = weaponFirePoint.position;
             newProjectile.transform.rotation = weaponFirePoint.rotation;
             newProjectile.gameObject.SetActive(true);
-            newProjectile.GetComponent<Projectile>().Initialize(weapon.weaponsStats, _t);
+            newProjectile.GetComponent<Projectile>().Initialize(weapon, _t);
             weaponCDTimer = weapon.weaponsStats.fireRate;
         }
     }
-
     void Update()
     {
         weaponCDTimer -= Time.deltaTime;
