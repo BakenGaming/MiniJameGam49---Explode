@@ -34,11 +34,11 @@ public class EnemyHandler : MonoBehaviour, IEnemyHandler, IDamageable
         _healthSystem.LoseHealth(_damage);
         if(_healthSystem.GetCurrentHealth() == 0)
         {
-            CollectableObjectHandler newCollectable = ObjectPooler.DequeueObject<CollectableObjectHandler>("Collectable");
-            newCollectable.transform.position = transform.position;
-            newCollectable.transform.rotation = transform.rotation;
-            newCollectable.gameObject.SetActive(true);
-            newCollectable.InitializeCollectable(enemySO.lootBag[0]);
+            // CollectableObjectHandler newCollectable = ObjectPooler.DequeueObject<CollectableObjectHandler>("Collectable");
+            // newCollectable.transform.position = transform.position;
+            // newCollectable.transform.rotation = transform.rotation;
+            // newCollectable.gameObject.SetActive(true);
+            // newCollectable.InitializeCollectable(enemySO.lootBag[0]);
             OnEnemyRemoved?.Invoke(this);
             ObjectPooler.EnqueueObject(this, "Enemy");
         }

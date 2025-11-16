@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8052212c6040c409bd15be97bcfc10, type: 3}
+  m_Name: CritChanceModifier
+  m_EditorClassIdentifier: Assembly-CSharp::ModifierSO
+  description: Increase Critical Strick Chance
+  modifierSprite: {fileID: -7021606560361369568, guid: ae3ab2f591e19d743b12704db50e9347, type: 3}
+  healthModifier: 0
+  damageModifier: 0
+  moveSpeedModifier: 0
+  fireRateModifier: 0
+  critChanceModifier: 5
+  critBonusModifier: 0
+  type: 4

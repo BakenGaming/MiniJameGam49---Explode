@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class UIController : MonoBehaviour
 {
@@ -61,7 +60,7 @@ public class UIController : MonoBehaviour
         PlanetHandler.OnHealthValueChange += UpdateHealthUI;
         //PlanetHandler.OnEnergyValueChange += UpdateEnergyUI;
         PlanetHandler.OnCrystalValueChanged += UpdateCrystalUI;
-        PlayerHandler.OnNewWeaponEquipped += UpdateWeaponUI;
+        PlanetHandler.OnNewWeaponEquipped += UpdateWeaponUI;
         //WeaponHandler.OnNewSpecialWeaponEquipped += UpdateSpecialWeaponUI;
         EnemySpawnSystem.OnTimerChange += UpdateGameTimerUI;
         EnemySpawnSystem.OnLevelEnd += HandleLevelEnd;
@@ -71,6 +70,10 @@ public class UIController : MonoBehaviour
         UpdateCrystalUI();
         InitializeWeaponUI();
         //UpdateSpecialWeaponUI();
+    }
+    public void AddEventsForUpgrades()
+    {
+        ButtonHandler.OnSelectionMade += CloseShopMenu;
     }
     #endregion
     #region Menu Actions
@@ -118,6 +121,7 @@ public class UIController : MonoBehaviour
     {
         shopMenu.SetActive(false);
         gameUIPanel.SetActive(true);
+        GameManager.i.StartNewLevel();
     }
     #endregion
     #region Menu Functions
@@ -158,7 +162,7 @@ public class UIController : MonoBehaviour
     }
     private void InitializeWeaponUI()
     {
-        foreach(WeaponSO weapon in PlayerHandler.i.GetActiveWeapons())
+        foreach(WeaponSO weapon in PlanetHandler.i.GetActiveWeapons())
         {
             GameObject newWeapon = Instantiate(GameAssets.i.pfWeaponUI, weaponsUI.transform);
             newWeapon.transform.SetParent(weaponsUI.transform);

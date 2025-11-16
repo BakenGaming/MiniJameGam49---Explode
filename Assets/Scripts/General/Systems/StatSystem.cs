@@ -5,22 +5,12 @@ using UnityEngine;
 public class StatSystem
 {
     private int health;
-    private int energy;
     public int damage;
     private float moveSpeed;
     private float fireRate;
     private float critChance;
     private float critBonus;
     private Brain[] enemyBrains;
-
-
-    public StatSystem (PlayerStatsSO _stats)
-    {
-        moveSpeed = _stats.moveSpeed;
-        fireRate = _stats.fireRateBonus;
-        critChance = _stats.critChance;
-        critBonus = _stats.critBonus;
-    }
 
     public StatSystem (EnemyStatsSO _stats)
     {
@@ -36,13 +26,16 @@ public class StatSystem
     public StatSystem (PlanetStatsSO _stats)
     {
         health = _stats.maxHealth;
-        energy = _stats.maxEnergy;
+        damage = _stats.baseDamage;
+        moveSpeed = _stats.baseMoveSpeed;
+        fireRate = _stats.basefireRate;
+        critChance = _stats.baseCritChance;
+        critBonus = _stats.baseCritDamage;
 
     }
 
     public int GetHealth (){return health;}
-    public float GetDamage(){return damage;}
-    public int GetEnergy (){return energy;}
+    public int GetDamage(){return damage;}
     public float GetMoveSpeed(){return moveSpeed;}
     public float GetFireRate(){return fireRate;}
     public float GetCritChance(){return critChance;}

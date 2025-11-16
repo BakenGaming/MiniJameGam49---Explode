@@ -9,43 +9,43 @@ public enum ModifierType
 }
 public class PlayerModifiers
 {
-    private float healthModifier;
-    private float damageModifier;
+    private int healthModifier;
+    private int damageModifier;
     private float moveSpeedModifier;
     private float fireRateModifier;
     private float critChanceModifier;
     private float critBonusModifier;
     public PlayerModifiers()
     {
-        healthModifier = 0f;
-        damageModifier = 1f;
-        moveSpeedModifier = 1f;
-        fireRateModifier = 1f;
-        critChanceModifier = 1f;
-        critBonusModifier = 1f;
+        healthModifier = 0;
+        damageModifier = 0;
+        moveSpeedModifier = 0f;
+        fireRateModifier = 0f;
+        critChanceModifier = 0f;
+        critBonusModifier = 0f;
     }
 
-    public void UpdateModifier(ModifierType _m, float _a)
+    public void UpdateModifier(ModifierSO _m)
     {
-        switch (_m)
+        switch (_m.type)
         {
             case ModifierType.health:
-                healthModifier += _a;
+                healthModifier += (int)_m.healthModifier;
                 break;
             case ModifierType.damage:
-                damageModifier += _a;
+                damageModifier += (int)_m.damageModifier;
                 break;
             case ModifierType.speed:
-                moveSpeedModifier += _a;
+                moveSpeedModifier += _m.moveSpeedModifier;
                 break;
             case ModifierType.fireRate:
-                fireRateModifier += _a;
+                fireRateModifier += _m.fireRateModifier;
                 break;
             case ModifierType.critChance:
-                critChanceModifier += _a;
+                critChanceModifier += _m.critBonusModifier;
                 break;
             case ModifierType.critBonus:
-                critBonusModifier += _a;
+                critBonusModifier += _m.critChanceModifier;
                 break;
         }
     }

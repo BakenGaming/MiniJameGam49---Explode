@@ -13,4 +13,9 @@ MonoBehaviour:
   m_Name: BasicPlanetStats
   m_EditorClassIdentifier: Assembly-CSharp::PlanetStatsSO
   maxHealth: 100
-  maxEnergy: 100
+  baseDamage: 10
+  baseMoveSpeed: 100
+  basefireRate: 0.7
+  baseCritChance: 10
+  baseCritDamage: 2
+  startingWeapon: {fileID: 11400000, guid: acdead596f6d0ed4aabe541dede26dd7, type: 2}

@@ -40,14 +40,8 @@ public class GameManager : MonoBehaviour
         planet = Instantiate(GameAssets.i.pfPlanetObject, spawnPoint);
         planet.transform.parent = null;
         planet.GetComponent<PlanetHandler>().Initialize();
-        SpawnPlayerObject();
-    }
-    private void SpawnPlayerObject()
-    {
-        playerGO = Instantiate(GameAssets.i.pfPlayerObject, planet.transform.Find("ShipSpawnPoint"));
-        playerGO.transform.parent = planet.transform;
-        playerGO.GetComponent<IHandler>().Initialize(startingWeapon);
-        InitializeUI();        
+        InitializeUI();
+        //SpawnPlayerObject();
     }
     private void InitializeUI()
     {
@@ -61,7 +55,15 @@ public class GameManager : MonoBehaviour
     }
     public void StartNewLevel()
     {
-        Debug.Log("Start New Level");
+        //levelIndex++;
+        //if(levelIndex > levels.Count-1) HandleGameComplete();
+        SetupSpawner();
+        UnPauseGame();
+    }
+
+    private void HandleGameComplete()
+    {
+        
     }
 
     public void SetupObjectPools()

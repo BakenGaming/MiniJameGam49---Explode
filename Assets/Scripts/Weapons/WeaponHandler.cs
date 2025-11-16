@@ -20,7 +20,8 @@ public class WeaponHandler : MonoBehaviour
             newProjectile.transform.rotation = weaponFirePoint.rotation;
             newProjectile.gameObject.SetActive(true);
             newProjectile.GetComponent<Projectile>().Initialize(weapon, _t);
-            weaponCDTimer = weapon.weaponsStats.fireRate;
+            weaponCDTimer = PlanetHandler.i.GetStatSystem().GetFireRate() -
+                PlanetHandler.i.GetModifierSystem().GetModifierValue(ModifierType.fireRate);
         }
     }
     void Update()

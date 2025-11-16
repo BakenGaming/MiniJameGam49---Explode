@@ -4,6 +4,7 @@ using UnityEngine;
 public class ModifierSO : ScriptableObject
 {
     public string description;
+    public Sprite modifierSprite;
     public float healthModifier;
     public float damageModifier;
     public float moveSpeedModifier;

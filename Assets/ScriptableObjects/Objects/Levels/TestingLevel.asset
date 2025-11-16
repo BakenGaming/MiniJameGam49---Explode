@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TestingLevel
   m_EditorClassIdentifier: Assembly-CSharp::LevelSO
   levelName: Testing
-  levelLengthInSeconds: 5
-  timeBetweenSpawnsStart: 3
+  levelLengthInSeconds: 2
+  timeBetweenSpawnsStart: 2
   minTimeBetweenSpawns: 1
   levelEnemies:
   - {fileID: 11400000, guid: a3e3b26f44ba0ff40a37b77fef3a4513, type: 2}

@@ -878,7 +878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &119458873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1207,7 +1207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &252990823
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4346244404228752641, guid: 76c60d7cec512be46a6f7dfe2ea3b298, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1408,7 +1408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4346244404228752641, guid: 76c60d7cec512be46a6f7dfe2ea3b298, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1518,7 +1518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &343092749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1975,7 +1975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &502615115
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2623,7 +2623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &639495957
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2697,17 +2697,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5439a40036cdcf46839916b26d60ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopMenuController
-  crystalText: {fileID: 1810493546}
-  healthStat: {fileID: 585867733}
-  damageStat: {fileID: 66258835}
-  speedStat: {fileID: 975739451}
-  fireRateStat: {fileID: 889577930}
-  critChanceStat: {fileID: 502045287}
-  critBonusStat: {fileID: 1031198961}
   upgradeOptions:
   - {fileID: 746600447}
   - {fileID: 1404601522}
   - {fileID: 1301518283}
+  modifierOptions:
+  - {fileID: 11400000, guid: cd4448811a429a44d9a6cfa62de6c67b, type: 2}
+  - {fileID: 11400000, guid: 8e2f8d7417e1ec347ad0afb124260e0e, type: 2}
+  - {fileID: 11400000, guid: 312f2cc090dc5df49aee1f2840c1b624, type: 2}
 --- !u!1 &738999550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,10 +2810,10 @@ RectTransform:
   - {fileID: 119458873}
   m_Father: {fileID: 1175704554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 232, y: -306}
-  m_SizeDelta: {x: 364, y: 512}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &746600449
 MonoBehaviour:
@@ -2832,7 +2829,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHandler
   upgradeImage: {fileID: 96331934}
   topPanel: {fileID: 1469438002}
-  topPanelSprites: []
+  topPanelSprites:
+  - {fileID: 5705809409719421563, guid: 7f5f7bf47b9325e4b95c7784834e7562, type: 3}
+  - {fileID: -3296043901018565432, guid: be7bc4f432a0c484d8e461d1cc603fdc, type: 3}
   highLight: {fileID: 119458872}
   upgradeText: {fileID: 1561223020}
   statUpgradeIndicators:
@@ -2842,6 +2841,9 @@ MonoBehaviour:
   - {fileID: 1707485486}
   - {fileID: 753901449}
   - {fileID: 275004115}
+  restoreHealthSprite: {fileID: -8630923909508717717, guid: 3caa87ab0d975044c979200273d2589a, type: 3}
+  restoreHealthTop: {fileID: 5705809409719421563, guid: 7f5f7bf47b9325e4b95c7784834e7562, type: 3}
+  restoreHealthText: Restore Health
 --- !u!114 &746600450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2885,7 +2887,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 746600451}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 746600449}
+        m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
+        m_MethodName: OnSelectedOption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &746600451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2981,7 +2995,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4346244404228752641, guid: 76c60d7cec512be46a6f7dfe2ea3b298, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4174,7 +4188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1115666922
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4270,7 +4284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 258.962, y: 113.77044}
+  m_AnchoredPosition: {x: 0.000030517578, y: -0.0000076293945}
   m_SizeDelta: {x: 1295.9476, y: 625.5792}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1175704555
@@ -4583,10 +4597,10 @@ RectTransform:
   - {fileID: 502615115}
   m_Father: {fileID: 1175704554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1060, y: -306}
-  m_SizeDelta: {x: 364, y: 512}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1301518285
 MonoBehaviour:
@@ -4602,7 +4616,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHandler
   upgradeImage: {fileID: 4322372}
   topPanel: {fileID: 1566050240}
-  topPanelSprites: []
+  topPanelSprites:
+  - {fileID: 5705809409719421563, guid: 7f5f7bf47b9325e4b95c7784834e7562, type: 3}
+  - {fileID: -3296043901018565432, guid: be7bc4f432a0c484d8e461d1cc603fdc, type: 3}
   highLight: {fileID: 502615114}
   upgradeText: {fileID: 2050163677}
   statUpgradeIndicators:
@@ -4612,6 +4628,9 @@ MonoBehaviour:
   - {fileID: 1707485486}
   - {fileID: 753901449}
   - {fileID: 275004115}
+  restoreHealthSprite: {fileID: -8630923909508717717, guid: 3caa87ab0d975044c979200273d2589a, type: 3}
+  restoreHealthTop: {fileID: 5705809409719421563, guid: 7f5f7bf47b9325e4b95c7784834e7562, type: 3}
+  restoreHealthText: Restore Health
 --- !u!114 &1301518286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4655,7 +4674,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1301518287}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1301518285}
+        m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
+        m_MethodName: OnSelectedOption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1301518287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4912,10 +4943,10 @@ RectTransform:
   - {fileID: 1115666922}
   m_Father: {fileID: 1175704554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 646, y: -306}
-  m_SizeDelta: {x: 364, y: 512}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1404601524
 MonoBehaviour:
@@ -4931,7 +4962,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHandler
   upgradeImage: {fileID: 1594146913}
   topPanel: {fileID: 1028337025}
-  topPanelSprites: []
+  topPanelSprites:
+  - {fileID: 5705809409719421563, guid: 7f5f7bf47b9325e4b95c7784834e7562, type: 3}
+  - {fileID: -3296043901018565432, guid: be7bc4f432a0c484d8e461d1cc603fdc, type: 3}
   highLight: {fileID: 1115666921}
   upgradeText: {fileID: 1815599150}
   statUpgradeIndicators:
@@ -4941,6 +4974,9 @@ MonoBehaviour:
   - {fileID: 1707485486}
   - {fileID: 753901449}
   - {fileID: 275004115}
+  restoreHealthSprite: {fileID: -8630923909508717717, guid: 3caa87ab0d975044c979200273d2589a, type: 3}
+  restoreHealthTop: {fileID: 5705809409719421563, guid: 7f5f7bf47b9325e4b95c7784834e7562, type: 3}
+  restoreHealthText: Restore Health
 --- !u!114 &1404601525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4984,7 +5020,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1404601526}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1404601524}
+        m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
+        m_MethodName: OnSelectedOption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1404601526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5881,7 +5929,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4346244404228752641, guid: 76c60d7cec512be46a6f7dfe2ea3b298, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6378,7 +6426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4346244404228752641, guid: 76c60d7cec512be46a6f7dfe2ea3b298, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6490,7 +6538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1935706751
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6603,7 +6651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -4346244404228752641, guid: 76c60d7cec512be46a6f7dfe2ea3b298, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6960,7 +7008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchoredPosition: {x: 0, y: -106}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2129578322
@@ -6983,7 +7031,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UPGRADE SHOP
+  m_text: CHOOSE AN UPGRADE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 606d2e6bb365e0a4d8892600f7e214f2, type: 2}
   m_sharedMaterial: {fileID: 4676815054508831470, guid: 606d2e6bb365e0a4d8892600f7e214f2, type: 2}

@@ -4,6 +4,5 @@ using UnityEngine;
 
 public interface IHandler
 {
-    public abstract void Initialize(WeaponSO _w);
-    public abstract StatSystem GetStatSystem();
+    public abstract void Initialize();
 }

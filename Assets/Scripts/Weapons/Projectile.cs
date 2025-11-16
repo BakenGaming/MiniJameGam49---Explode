@@ -7,8 +7,13 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;
     private float lifeTimer;
     private GameObject target;
+    private StatSystem _stats;
+    private PlayerModifiers _mod;
     public void Initialize(WeaponSO _w, GameObject _t)
     {
+        _stats = PlanetHandler.i.GetStatSystem();
+        _mod = PlanetHandler.i.GetModifierSystem();
+
         if(_t == null || _t.gameObject.activeInHierarchy == false) { ExpireObject(); return;}
         transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = _w.weaponSprite;
         weaponStats = _w.weaponsStats;
@@ -46,8 +51,16 @@ public class Projectile : MonoBehaviour
         EnemyHandler _handler = other.gameObject.GetComponent<EnemyHandler>();
         if(_handler != null)
         {
-            DamagePopup.Create(other.gameObject.transform.position, weaponStats.damage, false);
-            _handler.TakeDamage(weaponStats.damage);
+            float _weaponDamage = _stats.GetDamage() + _mod.GetModifierValue(ModifierType.damage);
+            float _critChance = Random.Range(0,101);  
+            if(_critChance >= (100 - _stats.GetCritChance() + _mod.GetModifierValue(ModifierType.critChance)))
+            {
+                _weaponDamage *= _stats.GetCritBonus() + _mod.GetModifierValue(ModifierType.critBonus);
+                DamagePopup.Create(other.gameObject.transform.position, (int)_weaponDamage, true);
+            }
+            else DamagePopup.Create(other.gameObject.transform.position, (int)_weaponDamage, false);
+
+            _handler.TakeDamage((int)_weaponDamage);
             ExpireObject();
         }
     }

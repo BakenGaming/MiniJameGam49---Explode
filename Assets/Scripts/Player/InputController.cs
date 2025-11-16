@@ -10,8 +10,12 @@ public class InputController : MonoBehaviour, IInputHandler
     private Transform homePlanetCenter;
     private Vector2 moveInput;
     private Rigidbody2D shipRB;
+    private StatSystem _stats;
+    private PlayerModifiers _mod;
     public void Initialize()
     {
+        _stats = PlanetHandler.i.GetStatSystem();
+        _mod = PlanetHandler.i.GetModifierSystem();
         homePlanetCenter = GameManager.i.GetPlanetCenter();
         shipRB = GetComponent<Rigidbody2D>();
 
@@ -74,9 +78,13 @@ public class InputController : MonoBehaviour, IInputHandler
     }
     private void MoveShip()
     {
+        float _currentMoveSpeed = _stats.GetMoveSpeed() + _mod.GetModifierValue(ModifierType.speed);
+        
         if(moveInput.x > 0)
-            transform.RotateAround(homePlanetCenter.position, Vector3.forward, -100 * Time.deltaTime);
+            transform.RotateAround(homePlanetCenter.position, Vector3.forward, 
+                -_currentMoveSpeed * Time.deltaTime);
         if(moveInput.x < 0)
-            transform.RotateAround(homePlanetCenter.position, Vector3.forward, 100 * Time.deltaTime);
+            transform.RotateAround(homePlanetCenter.position, Vector3.forward, 
+                _currentMoveSpeed * Time.deltaTime);
     }
 }
